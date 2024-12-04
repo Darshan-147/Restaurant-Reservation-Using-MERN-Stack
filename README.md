@@ -1,2 +1,2 @@
-## Restaurant Reservation Using MERN Stack
+# Restaurant Reservation Using MERN Stack
 
