@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import axios from "axios";
-import { useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
@@ -14,9 +13,51 @@ const Reservation = () => {
   const [phone, setPhone] = useState("");
   const navigate = useNavigate();
 
+  // Validation Function for custom error implementation
+  const validateInputs = () => {
+    if (!firstName.trim()) {
+      toast.error("First name is required.");
+      return false;
+    }
+    if(firstName.trim().length<2){
+      toast.error("First name should be of more than 2 characters.");
+      return false;
+    }
+    if (!lastName.trim()) {
+      toast.error("Last name is required.");
+      return false;
+    }
+    if(lastName.trim().length<2){
+      toast.error("Last name should be of more than 2 characters.");
+      return false;
+    }
+    if (!email.trim() || !/^\S+@\S+\.\S+$/.test(email)) {
+      toast.error("Please enter a valid email.");
+      return false;
+    }
+    if (!phone.trim() || !/^\d{10}$/.test(phone)) {
+      toast.error("Please enter a valid 10-digit phone number.");
+      return false;
+    }
+    if (!date.trim()) {
+      toast.error("Date is required.");
+      return false;
+    }
+    if (!time.trim()) {
+      toast.error("Time is required.");
+      return false;
+    }
+    return true; 
+  };
+
   const handleReservation = async (e) => {
-    console.log("clicked");
     e.preventDefault();
+
+    // Validate inputs before making API call
+    if (!validateInputs()) {
+      return;
+    }
+
     try {
       const { data } = await axios.post(
         "/api/v1/reservation/send",
@@ -28,11 +69,10 @@ const Reservation = () => {
           withCredentials: true,
         }
       );
-      console.log(data.message)
       toast.success(data.message);
       setFirstName("");
       setLastName("");
-      setPhone(0);
+      setPhone("");
       setEmail("");
       setTime("");
       setDate("");

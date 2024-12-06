@@ -1,7 +1,6 @@
 import ErrorHandler from "../middlewares/error.js";
 import { Reservation } from "../models/reservationSchema.js";
 
-
 const send_reservation = async (req, res, next) => {
   console.log(req.body);
   const { firstName, lastName, email, date, time, phone } = req.body;
@@ -17,9 +16,11 @@ const send_reservation = async (req, res, next) => {
     });
   } catch (error) {
     // Handle Mongoose validation errors
-    if (error.name === 'ValidationError') {
-      const validationErrors = Object.values(error.errors).map(err => err.message);
-      return next(new ErrorHandler(validationErrors.join(', '), 400));
+    if (error.name === "ValidationError") {
+      const validationErrors = Object.values(error.errors).map(
+        (err) => err.message
+      );
+      return next(new ErrorHandler(validationErrors.join(", "), 400));
     }
 
     // Handle other errors
@@ -27,6 +28,4 @@ const send_reservation = async (req, res, next) => {
   }
 };
 
-
 export default send_reservation;
-
