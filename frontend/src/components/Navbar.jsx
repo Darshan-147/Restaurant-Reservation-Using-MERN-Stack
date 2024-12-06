@@ -22,7 +22,16 @@ const Navbar = () => {
               </Link>
             ))}
           </div>
-          <button className="menuBtn" onClick={()=>document.querySelector(".menu").scrollIntoView({behavior:"smooth"})}>OUR MENU</button>
+          <button
+            className="menuBtn"
+            onClick={() =>
+              document
+                .querySelector(".menu")
+                .scrollIntoView({ behavior: "smooth" })
+            }
+          >
+            OUR MENU
+          </button>
         </div>
         <div className="hamburger" onClick={() => setShow(!show)}>
           <GiHamburgerMenu />

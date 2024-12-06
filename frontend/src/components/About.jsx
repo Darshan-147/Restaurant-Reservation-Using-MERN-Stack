@@ -13,14 +13,20 @@ const About = () => {
               <p>The only thing we're serious about is food.</p>
             </div>
             <p className="mid">
-              At our online restaurant, we are passionate about delivering an exceptional culinary experience right to your doorstep. With a team of skilled chefs and a commitment to using only the freshest, locally-sourced ingredients, we craft each dish with meticulous attention to detail and unwavering dedication to flavor. Join us on a gastronomic journey that celebrates the art of cooking and the joy of great food.
+              At our online restaurant, we are passionate about delivering an
+              exceptional culinary experience right to your doorstep. With a
+              team of skilled chefs and a commitment to using only the freshest,
+              locally-sourced ingredients, we craft each dish with meticulous
+              attention to detail and unwavering dedication to flavor. Join us
+              on a gastronomic journey that celebrates the art of cooking and
+              the joy of great food.
             </p>
-            <Link to={"/"}>
-              Explore Menu{" "}
+            <button onClick={()=>document.querySelector('.menu').scrollIntoView({behavior:"smooth"})}>
+              Explore Menu
               <span>
                 <HiOutlineArrowRight />
               </span>
-            </Link>
+            </button>
           </div>
           <div className="banner">
             <img src="about.png" alt="about" />

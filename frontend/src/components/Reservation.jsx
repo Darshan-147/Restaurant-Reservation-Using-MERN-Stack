@@ -1,5 +1,5 @@
 import React from "react";
-import { HiOutlineArrowNarrowRight } from "react-icons/hi";
+import { HiOutlineArrowRight } from "react-icons/hi";
 import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
@@ -99,7 +99,7 @@ const Reservation = () => {
               <button type="submit" onClick={handleReservation}>
                 RESERVE NOW{" "}
                 <span>
-                  <HiOutlineArrowNarrowRight />
+                  <HiOutlineArrowRight />
                 </span>
               </button>
             </form>
