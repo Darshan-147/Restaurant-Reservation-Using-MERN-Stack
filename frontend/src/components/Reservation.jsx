@@ -19,7 +19,7 @@ const Reservation = () => {
       toast.error("First name is required.");
       return false;
     }
-    if(firstName.trim().length<2){
+    if (firstName.trim().length < 2) {
       toast.error("First name should be of more than 2 characters.");
       return false;
     }
@@ -27,7 +27,7 @@ const Reservation = () => {
       toast.error("Last name is required.");
       return false;
     }
-    if(lastName.trim().length<2){
+    if (lastName.trim().length < 2) {
       toast.error("Last name should be of more than 2 characters.");
       return false;
     }
@@ -39,15 +39,26 @@ const Reservation = () => {
       toast.error("Please enter a valid 10-digit phone number.");
       return false;
     }
-    if (!date.trim()) {
-      toast.error("Date is required.");
+    const reservationDate = new Date(date.trim());
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    if (isNaN(reservationDate)) {
+      toast.error("Reservation date is required.");
       return false;
     }
+
+    if (reservationDate < today) {
+      toast.error("Please enter a valid reservation date.");
+      return false;
+    }
+
     if (!time.trim()) {
-      toast.error("Time is required.");
+      toast.error("Reservation time is required.");
       return false;
     }
-    return true; 
+    return true;
   };
 
   const handleReservation = async (e) => {
