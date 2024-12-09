@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { HiOutlineArrowRight } from "react-icons/hi";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -11,16 +11,67 @@ const Reservation = () => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
   const [phone, setPhone] = useState("");
+  const [availableSeats, setAvailableSeats] = useState(100); // Default seat count
+  const [message, setMessage] = useState("");
+  const [isPrivate, setIsPrivate] = useState(false); // For private bookings
   const navigate = useNavigate();
 
-  // Validation Function for custom error implementation
+  // Update seat message
+  const updateMessage = (availableSeats) => {
+    if (availableSeats <= 40) {
+      setMessage(`Hurry! Only ${availableSeats} seats are left!`);
+    } else {
+      setMessage(`${availableSeats} seats available.`);
+    }
+  };
+
+  // Fetch seat availability on component mount
+  useEffect(() => {
+    const fetchSeats = async () => {
+      try {
+        const { data } = await axios.get("/api/v1/seats/availability");
+        setAvailableSeats(data.availableSeats);
+        updateMessage(data.availableSeats);
+      } catch (error) {
+        console.error("Error fetching seats:", error);
+        if (error.response) {
+          // Response was received but the server returned a non-2xx status code
+          console.error("Response Error:", error.response.data);
+          console.error("Response Status:", error.response.status);
+          console.error("Response Headers:", error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.error("Request Error:", error.request);
+        } else {
+          // Some other error occurred in setting up the request
+          console.error("Error Message:", error.message);
+        }
+        toast.error("Failed to fetch seat availability");
+      }
+    };
+
+    fetchSeats();
+  }, []);
+
+  // Reset form fields
+  const resetForm = () => {
+    setFirstName("");
+    setLastName("");
+    setEmail("");
+    setDate("");
+    setTime("");
+    setPhone("");
+    setIsPrivate(false);
+  };
+
+  // Validate input fields
   const validateInputs = () => {
     if (!firstName.trim()) {
       toast.error("First name is required.");
       return false;
     }
     if (firstName.trim().length < 2) {
-      toast.error("First name should be of more than 2 characters.");
+      toast.error("First name should be at least 2 characters.");
       return false;
     }
     if (!lastName.trim()) {
@@ -28,7 +79,7 @@ const Reservation = () => {
       return false;
     }
     if (lastName.trim().length < 2) {
-      toast.error("Last name should be of more than 2 characters.");
+      toast.error("Last name should be at least 2 characters.");
       return false;
     }
     if (!email.trim() || !/^\S+@\S+\.\S+$/.test(email)) {
@@ -39,8 +90,8 @@ const Reservation = () => {
       toast.error("Please enter a valid 10-digit phone number.");
       return false;
     }
-    const reservationDate = new Date(date.trim());
 
+    const reservationDate = new Date(date.trim());
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
@@ -61,35 +112,27 @@ const Reservation = () => {
     return true;
   };
 
+  // Handle reservation submission
   const handleReservation = async (e) => {
     e.preventDefault();
-
-    // Validate inputs before making API call
-    if (!validateInputs()) {
-      return;
-    }
+    if (!validateInputs()) return;
 
     try {
       const { data } = await axios.post(
         "/api/v1/reservation/send",
-        { firstName, lastName, email, phone, date, time },
+        { firstName, lastName, email, phone, date, time, isPrivate },
         {
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           withCredentials: true,
         }
       );
       toast.success(data.message);
-      setFirstName("");
-      setLastName("");
-      setPhone("");
-      setEmail("");
-      setTime("");
-      setDate("");
+      setAvailableSeats(data.availableSeats); // Update seat count
+      updateMessage(data.availableSeats);
+      resetForm();
       navigate("/success");
     } catch (error) {
-      toast.error("Error submitting details");
+      toast.error("Error submitting reservation");
     }
   };
 
@@ -97,12 +140,12 @@ const Reservation = () => {
     <section className="reservation" id="reservation">
       <div className="container">
         <div className="banner">
-          <img src="/reservation.png" alt="res" />
+          <img src="/reservation.png" alt="Reservation Banner" />
         </div>
         <div className="banner">
           <div className="reservation_form_box">
             <h1>MAKE A RESERVATION</h1>
-            <p>For Further Questions, Please Call</p>
+            <p>For queries, feel free to reach out to us.</p>
             <form>
               <div>
                 <input
@@ -136,7 +179,6 @@ const Reservation = () => {
                 <input
                   type="email"
                   placeholder="Email"
-                  className="email_tag"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
@@ -147,6 +189,15 @@ const Reservation = () => {
                   onChange={(e) => setPhone(e.target.value)}
                 />
               </div>
+              <div className="privateBooking">
+                <input
+                  type="checkbox"
+                  id="privateBooking"
+                  checked={isPrivate}
+                  onChange={(e) => setIsPrivate(e.target.checked)}
+                />
+                <label htmlFor="privateBooking">Private Booking</label>
+              </div>
               <button type="submit" onClick={handleReservation}>
                 RESERVE NOW{" "}
                 <span>
@@ -154,6 +205,8 @@ const Reservation = () => {
                 </span>
               </button>
             </form>
+            <p></p>
+            <p>{message}</p>
           </div>
         </div>
       </div>

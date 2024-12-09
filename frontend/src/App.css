@@ -922,18 +922,8 @@ footer .container .banner .right {
   background: transparent;
 }
 .reservation .container .banner .reservation_form_box form div input:focus,
-.reservation
-  .container
-  .banner
-  .reservation_form_box
-  form
-  input[type="number"]:focus,
-.reservation
-  .container
-  .banner
-  .reservation_form_box
-  form
-  input[type="email"]:focus {
+.reservation .container .banner .reservation_form_box form input[type="number"]:focus,
+.reservation .container .banner .reservation_form_box form input[type="email"]:focus {
   outline: none;
   border-bottom: 2px solid skyblue;
 }
@@ -966,6 +956,16 @@ footer .container .banner .right {
 .reservation .container .banner img {
   width: 550px;
 }
+
+.reservation_form_box .privateBooking {
+  display: inline-flex !important;
+}
+
+.reservation_form_box label {
+  margin: 0; /* Ensure no extra margin around the label */
+  font-size: 16px; /* Adjust the label font size if necessary */
+}
+
 .reservation .container .banner .reservation_form_box form button {
   border: 1px solid black;
   padding: 8px 36px;
