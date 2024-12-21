@@ -29,23 +29,10 @@ const Reservation = () => {
   useEffect(() => {
     const fetchSeats = async () => {
       try {
-        const { data } = await axios.get("/api/v1/seats/availability");
+        const { data } = await axios.get("/api/v1/reservation/availability");
         setAvailableSeats(data.availableSeats);
         updateMessage(data.availableSeats);
       } catch (error) {
-        console.error("Error fetching seats:", error);
-        if (error.response) {
-          // Response was received but the server returned a non-2xx status code
-          console.error("Response Error:", error.response.data);
-          console.error("Response Status:", error.response.status);
-          console.error("Response Headers:", error.response.headers);
-        } else if (error.request) {
-          // The request was made but no response was received
-          console.error("Request Error:", error.request);
-        } else {
-          // Some other error occurred in setting up the request
-          console.error("Error Message:", error.message);
-        }
         toast.error("Failed to fetch seat availability");
       }
     };
