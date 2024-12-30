@@ -1,7 +1,7 @@
 import ErrorHandler from "../middlewares/error.js";
 import { Reservation } from "../models/reservationSchema.js";
 
-// Sample total capacity
+// Total capacity
 const TOTAL_SEATS = 100;
 
 const send_reservation = async (req, res, next) => {

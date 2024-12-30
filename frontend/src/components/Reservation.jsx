@@ -5,16 +5,35 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const Reservation = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [date, setDate] = useState("");
-  const [time, setTime] = useState("");
-  const [phone, setPhone] = useState("");
+  const [firstName, setFirstName] = useState("Darshan");
+  const [lastName, setLastName] = useState("Soni");
+  const [email, setEmail] = useState("darshan1233@gmail.com");
+  const [date, setDate] = useState("26-05-2025");
+  const [time, setTime] = useState("12:00");
+  const [phone, setPhone] = useState("1234567890");
   const [availableSeats, setAvailableSeats] = useState(100); // Default seat count
   const [message, setMessage] = useState("");
   const [isPrivate, setIsPrivate] = useState(false); // For private bookings
   const navigate = useNavigate();
+
+  // Fetch seat availability on component mount
+  useEffect(() => {
+    const fetchSeats = async () => {
+      try {
+        console.log(firstName);
+        const { data } = await axios.get("/api/v1/reservation/availability", {
+          params: { firstName }, // Pass date and time as query parameters
+        });
+        setAvailableSeats(data.availableSeats);
+        updateMessage(data.availableSeats);
+      } catch (error) {
+        toast.error("Failed to fetch seat availability");
+      }
+    };
+  
+    fetchSeats();
+  }, [availableSeats, firstName]); // Add date and time as dependencies if they're dynamic
+  
 
   // Update seat message
   const updateMessage = (availableSeats) => {
@@ -24,21 +43,6 @@ const Reservation = () => {
       setMessage(`${availableSeats} seats available.`);
     }
   };
-
-  // Fetch seat availability on component mount
-  useEffect(() => {
-    const fetchSeats = async () => {
-      try {
-        const { data } = await axios.get("/api/v1/reservation/availability");
-        setAvailableSeats(data.availableSeats);
-        updateMessage(data.availableSeats);
-      } catch (error) {
-        toast.error("Failed to fetch seat availability");
-      }
-    };
-
-    fetchSeats();
-  }, []);
 
   // Reset form fields
   const resetForm = () => {
