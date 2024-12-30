@@ -16,25 +16,6 @@ const Reservation = () => {
   const [isPrivate, setIsPrivate] = useState(false); // For private bookings
   const navigate = useNavigate();
 
-  // Fetch seat availability on component mount
-  useEffect(() => {
-    const fetchSeats = async () => {
-      try {
-        console.log(firstName);
-        const { data } = await axios.get("/api/v1/reservation/availability", {
-          params: { firstName }, // Pass date and time as query parameters
-        });
-        setAvailableSeats(data.availableSeats);
-        updateMessage(data.availableSeats);
-      } catch (error) {
-        toast.error("Failed to fetch seat availability");
-      }
-    };
-  
-    fetchSeats();
-  }, [availableSeats, firstName]); // Add date and time as dependencies if they're dynamic
-  
-
   // Update seat message
   const updateMessage = (availableSeats) => {
     if (availableSeats <= 40) {
@@ -43,6 +24,34 @@ const Reservation = () => {
       setMessage(`${availableSeats} seats available.`);
     }
   };
+
+  // Fetch seat availability on component mount
+  useEffect(() => {
+    const fetchSeats = async () => {
+      try {
+        const { data } = await axios.get("/api/v1/seats/availability");
+        setAvailableSeats(data.availableSeats);
+        updateMessage(data.availableSeats);
+      } catch (error) {
+        console.error("Error fetching seats:", error);
+        if (error.response) {
+          // Response was received but the server returned a non-2xx status code
+          console.error("Response Error:", error.response.data);
+          console.error("Response Status:", error.response.status);
+          console.error("Response Headers:", error.response.headers);
+        } else if (error.request) {
+          // The request was made but no response was received
+          console.error("Request Error:", error.request);
+        } else {
+          // Some other error occurred in setting up the request
+          console.error("Error Message:", error.message);
+        }
+        toast.error("Failed to fetch seat availability");
+      }
+    };
+
+    fetchSeats();
+  }, []);
 
   // Reset form fields
   const resetForm = () => {
