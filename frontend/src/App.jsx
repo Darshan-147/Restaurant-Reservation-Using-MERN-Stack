@@ -3,9 +3,9 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
+  useLocation,
 } from "react-router-dom";
-import { SignedIn, SignedOut, SignIn, UserButton } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, SignIn } from "@clerk/clerk-react";
 import { Toaster } from "react-hot-toast";
 import Home from "./Pages/Home/Home";
 import NotFound from "./Pages/NotFound/NotFound";
@@ -25,14 +25,18 @@ const ProtectedRoute = ({ children }) => {
   return <SignedIn>{children}</SignedIn>;
 };
 
-const App = () => {
+const AppContent = () => {
+  const location = useLocation();
+
   return (
-    <Router>
-      <header>
-        <SignedIn>
-          <Home />
-        </SignedIn>
-      </header>
+    <>
+      {location.pathname !== "/success" && (
+        <header>
+          <SignedIn>
+            <Home />
+          </SignedIn>
+        </header>
+      )}
 
       {/* Define routes */}
       <Routes>
@@ -55,6 +59,14 @@ const App = () => {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Toaster />
+    </>
+  );
+};
+
+const App = () => {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 };

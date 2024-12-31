@@ -5,12 +5,12 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const Reservation = () => {
-  const [firstName, setFirstName] = useState("dashu");
-  const [lastName, setLastName] = useState("dashu");
-  const [email, setEmail] = useState("dashu@gmail.com");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
   const [date, setDate] = useState("");
-  const [time, setTime] = useState("08:00");
-  const [phone, setPhone] = useState("1234568900");
+  const [time, setTime] = useState("");
+  const [phone, setPhone] = useState("");
   const navigate = useNavigate();
 
   // Validation Function for custom error implementation
