@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { data } from "../restApi.json";
 import { Link } from "react-scroll";
 import { GiHamburgerMenu } from "react-icons/gi";
+import { UserButton } from "@clerk/clerk-react";
 const Navbar = () => {
   const [show, setShow] = useState(false);
   return (
@@ -32,6 +33,9 @@ const Navbar = () => {
           >
             OUR MENU
           </button>
+          <div className="userBtn">
+            <UserButton/>
+          </div>
         </div>
         <div className="hamburger" onClick={() => setShow(!show)}>
           <GiHamburgerMenu />

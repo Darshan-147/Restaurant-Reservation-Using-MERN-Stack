@@ -11,6 +11,16 @@
   display: none;
 }
 
+/***********************SIGN IN/SIGN UP PAGE STYLING *************************/
+.sign-in {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background: linear-gradient(0deg, white, cyan);
+}
+
 /********************** HERO SECTION COMPONENT STYLING **************************/
 /**********************************************************************************************************************/
 nav {
@@ -78,6 +88,15 @@ nav .menuBtn:hover {
   transition: 0.3s;
   cursor: pointer;
 }
+
+nav .cl-avatarBox {
+  height: 40px !important;
+  width: 40px !important;
+}
+
+.cl-userButtonPopoverFooter, .cl-internal-1dauvpw {
+  display: none ;
+}
 nav .hamburger {
   display: none;
 }
@@ -131,12 +150,16 @@ nav svg {
     margin-right: 30px;
     border-top-right-radius: 7px;
     border-top-left-radius: 7px;
+    opacity: 0.9;
   }
   nav .showmenu .links {
     flex-direction: column;
     text-align: center;
   }
   nav .menuBtn {
+    margin-top: 20px;
+  }
+  nav .userBtn {
     margin-top: 20px;
   }
 }
