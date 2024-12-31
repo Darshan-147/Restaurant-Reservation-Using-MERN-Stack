@@ -1,174 +1,174 @@
 {
-    "data": [
-        {"ourQualities" : [
-            {
-                "id": 1,
-                "image": "./quality_food.svg",
-                "title": "QUALITY FOOD",
-                "description": "Savor the exquisite artistry of our meticulously crafted dishes, where every bite unveils a harmonious blend of locally sourced, premium ingredients prepared with unwavering passion and culinary expertise." 
-            },
-            {
-                "id": 2,
-                "image": "./super_taste.svg",
-                "title": "SUPER TASTE",
-                "description": "Embark on a flavor odyssey that tantalizes your taste buds with an explosion of meticulously balanced and vibrant flavors, leaving an indelible imprint of pure gastronomic bliss." 
-            },
-            {
-                "id": 3,
-                "image": "./fast_delivery.svg",
-                "title": "FAST DELIVERY",
-                "description": "Experience the epitome of convenience with our lightning-fast delivery service, ensuring your cravings are satisfied in the blink of an eye, without compromising on quality or freshness." 
-            }
-        ],
-        "dishes": [
-            {
-                "id": 1,
-                "image": "./dinner1.jpeg",
-                "title": "VEG. MANCHURIAN",
-                "category": "Dinner"
-            },
-            {
-                "id": 2,
-                "image": "./dinner2.png",
-                "title": "PANEER TIKKA MASALA",
-                "category": "Dinner"
-            },
-            {
-                "id": 3,
-                "image": "./breakfast1.png",
-                "title": "HANDVO",
-                "category": "Breakfast"
-            },
-            {
-                "id": 4,
-                "image": "./dinner3.png",
-                "title": "STUFFED STRAWBERRY PASTRY",
-                "category": "Dessert"
-            },
-            {
-                "id": 5,
-                "image": "./lunch1.png",
-                "title": "BIG BURGER",
-                "category": "Lunch"
-            },
-            {
-                "id": 6,
-                "image": "./dinner4.png",
-                "title": "MUSSELS SOUP",
-                "category": "Starter"
-            },
-            {
-                "id": 7,
-                "image": "./dinner5.png",
-                "title": "BAJRI NA ROTLA",
-                "category": "Lunch/Dinner"
-            },
-            {
-                "id": 8,
-                "image": "./dessert1.png",
-                "title": "CHOCOLATE ICE CREAM",
-                "category": "Dessert"
-            }
-        ],
-        "team": [
-            {
-                "id": 1,
-                "image": "./team_member_1.png",
-                "name": "DARSHAN SONI",
-                "designation": "Founder & Head Chef"
-            },
-            {
-                "id": 2,
-                "image": "./team_member_2.png",
-                "name": "DARSHAN LALJANI",
-                "designation": "Sous Chef"
-            },
-            {
-                "id": 3,
-                "image": "./team_member_3.png",
-                "name": "DARSHAN THAKKAR",
-                "designation": "Fast Food Chef"
-            },
-            {
-                "id": 4,
-                "image": "./team_member_4.png",
-                "name": "DARSHAN PATEL",
-                "designation": "Senior Chef"
-            }
-        ],
-        "testimonials": [
-            {
-                "id": 1,
-                "image": "./review1.png",
-                "description": "Morbi nulla nec dui lacus, in. Libero in pretium metus massa. Sodales dignissim vitae mauris varius faucibus. Eleifend dui, non laoreet ac luctus facilisis diam. Enim scelerisque vel at id viverra tellus.",
-                "rating": 4,
-                "userName": "Jane Cooper"
-            },
-            {
-                "id": 2,
-                "image": "./review2.png",
-                "description": "Tortor vel nunc netus pharetra enim, enim dolor mauris in. Sit nam fringilla in egestas. Libero condimentum quis in vulputate adipiscing venenatis augue. Venenatis faucibus.",
-                "rating": 4.5,
-                "userName": "Esther Howard"
-            },
-            {
-                "id": 3,
-                "image": "./review3.png",
-                "description": "Tortor vel nunc netus pharetra enim, enim dolor mauris in. Sit nam fringilla in egestas. Libero condimentum quis in vulputate adipiscing venenatis augue. Venenatis faucibus.",
-                "rating": 5,
-                "userName": "Guy Hawkins"
-            }
-        ],
-        "who_we_are": [
-            {
-                "id": 1,
-                "number": "1",
-                "title": "Restaurant"
-            },
-            {
-                "id": 2,
-                "number": "4",
-                "title": "Chef In Kitchen"
-            },
-            {
-                "id": 3,
-                "number": "6",
-                "title": "Years Of Experience"
-            },
-            {
-                "id": 4,
-                "number": "200+",
-                "title": "Food Dishes"
-            }
-        ],
-        "navbarLinks": [
-            {
-                "id": 1,
-                "title": "HOME",
-                "link": "heroSection"
-            },
-            {
-                "id": 2,
-                "title": "ABOUT US",
-                "link": "about"
-            },
-            {
-                "id": 3,
-                "title": "SERVICES",
-                "link": "qualities"
-            },
-            {
-                "id": 4,
-                "title": "TEAM",
-                "link": "team"
-            },
-            {
-                "id": 5,
-                "title": "RESERVATION",
-                "link": "reservation"
-            }
-        ]
-    
-    } 
-    ]
+  "data": [
+    {
+      "ourQualities": [
+        {
+          "id": 1,
+          "image": "./quality_food.svg",
+          "title": "QUALITY FOOD",
+          "description": "Savor the exquisite artistry of our meticulously crafted dishes, where every bite unveils a harmonious blend of locally sourced, premium ingredients prepared with unwavering passion and culinary expertise."
+        },
+        {
+          "id": 2,
+          "image": "./super_taste.svg",
+          "title": "SUPER TASTE",
+          "description": "Embark on a flavor odyssey that tantalizes your taste buds with an explosion of meticulously balanced and vibrant flavors, leaving an indelible imprint of pure gastronomic bliss."
+        },
+        {
+          "id": 3,
+          "image": "./fast_delivery.svg",
+          "title": "FAST DELIVERY",
+          "description": "Experience the epitome of convenience with our lightning-fast delivery service, ensuring your cravings are satisfied in the blink of an eye, without compromising on quality or freshness."
+        }
+      ],
+      "dishes": [
+        {
+          "id": 1,
+          "image": "./dinner1.jpeg",
+          "title": "VEG. MANCHURIAN",
+          "category": "Dinner"
+        },
+        {
+          "id": 2,
+          "image": "./dinner2.png",
+          "title": "PANEER TIKKA MASALA",
+          "category": "Dinner"
+        },
+        {
+          "id": 3,
+          "image": "./breakfast1.png",
+          "title": "HANDVO",
+          "category": "Breakfast"
+        },
+        {
+          "id": 4,
+          "image": "./dinner3.png",
+          "title": "STUFFED STRAWBERRY PASTRY",
+          "category": "Dessert"
+        },
+        {
+          "id": 5,
+          "image": "./lunch1.png",
+          "title": "BIG BURGER",
+          "category": "Lunch"
+        },
+        {
+          "id": 6,
+          "image": "./dinner4.png",
+          "title": "MUSSELS SOUP",
+          "category": "Starter"
+        },
+        {
+          "id": 7,
+          "image": "./dinner5.png",
+          "title": "BAJRI NA ROTLA",
+          "category": "Lunch/Dinner"
+        },
+        {
+          "id": 8,
+          "image": "./dessert1.png",
+          "title": "CHOCOLATE ICE CREAM",
+          "category": "Dessert"
+        }
+      ],
+      "team": [
+        {
+          "id": 1,
+          "image": "./team_member_2.png",
+          "name": "DARSHAN SONI",
+          "designation": "Founder & Head Chef"
+        },
+        {
+          "id": 2,
+          "image": "./team_member_1.png",
+          "name": "DARSHAN LALJANI",
+          "designation": "Sous Chef"
+        },
+        {
+          "id": 3,
+          "image": "./team_member_3.png",
+          "name": "DARSHAN THAKKAR",
+          "designation": "Fast Food Chef"
+        },
+        {
+          "id": 4,
+          "image": "./team_member_4.png",
+          "name": "DARSHAN PATEL",
+          "designation": "Senior Chef"
+        }
+      ],
+      "testimonials": [
+        {
+          "id": 1,
+          "image": "./review1.png",
+          "description": "Morbi nulla nec dui lacus, in. Libero in pretium metus massa. Sodales dignissim vitae mauris varius faucibus. Eleifend dui, non laoreet ac luctus facilisis diam. Enim scelerisque vel at id viverra tellus.",
+          "rating": 4,
+          "userName": "Jane Cooper"
+        },
+        {
+          "id": 2,
+          "image": "./review2.png",
+          "description": "Tortor vel nunc netus pharetra enim, enim dolor mauris in. Sit nam fringilla in egestas. Libero condimentum quis in vulputate adipiscing venenatis augue. Venenatis faucibus.",
+          "rating": 4.5,
+          "userName": "Esther Howard"
+        },
+        {
+          "id": 3,
+          "image": "./review3.png",
+          "description": "Tortor vel nunc netus pharetra enim, enim dolor mauris in. Sit nam fringilla in egestas. Libero condimentum quis in vulputate adipiscing venenatis augue. Venenatis faucibus.",
+          "rating": 5,
+          "userName": "Guy Hawkins"
+        }
+      ],
+      "who_we_are": [
+        {
+          "id": 1,
+          "number": "1",
+          "title": "Restaurant"
+        },
+        {
+          "id": 2,
+          "number": "4",
+          "title": "Chef In Kitchen"
+        },
+        {
+          "id": 3,
+          "number": "6",
+          "title": "Years Of Experience"
+        },
+        {
+          "id": 4,
+          "number": "200+",
+          "title": "Food Dishes"
+        }
+      ],
+      "navbarLinks": [
+        {
+          "id": 1,
+          "title": "HOME",
+          "link": "heroSection"
+        },
+        {
+          "id": 2,
+          "title": "ABOUT US",
+          "link": "about"
+        },
+        {
+          "id": 3,
+          "title": "SERVICES",
+          "link": "qualities"
+        },
+        {
+          "id": 4,
+          "title": "TEAM",
+          "link": "team"
+        },
+        {
+          "id": 5,
+          "title": "RESERVATION",
+          "link": "reservation"
+        }
+      ]
+    }
+  ]
 }

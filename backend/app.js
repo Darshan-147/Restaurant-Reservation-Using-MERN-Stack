@@ -7,7 +7,7 @@ import { dbConnection } from "./database/dbConnection.js";
 import { Reservation } from "./models/reservationSchema.js";
 
 const app = express();
-dotenv.config({ path: "./.env" });
+dotenv.config({ path: "../.env" });
 
 app.use(cors());
 
