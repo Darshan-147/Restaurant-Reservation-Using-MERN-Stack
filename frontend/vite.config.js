@@ -10,7 +10,8 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/api': "http://localhost:4000"
-    }
-  }
+      // not only will this replace /api with localhost url, but also will make the server think that the request is originated from this same url, even though if it was originated from a different url
+      "/api": "http://localhost:4000",
+    },
+  },
 });
