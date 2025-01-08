@@ -1,7 +1,18 @@
 import app from "./app.js";
+import detect from "detect-port";
 
-const port = process.env.PORT || 3000;
+const defaultPort = process.env.PORT;
 
-app.listen(port, () => {
-  console.log(`SERVER HAS STARTED ON http://localhost:${port}`);
+detect(defaultPort).then((port) => {
+  if (port === parseInt(defaultPort, 10)) {
+    app.listen(port, () => {
+      console.log(`SERVER HAS STARTED ON http://localhost:${port}`);
+    });
+  } else {
+    console.log(`Port ${defaultPort} is in use. Switching to port ${port}.`);
+
+    app.listen(port, () => {
+      console.log(`SERVER HAS STARTED ON http://localhost:${port}`);
+    });
+  }
 });
