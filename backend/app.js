@@ -9,7 +9,12 @@ import { Reservation } from "./models/reservationSchema.js";
 const app = express();
 dotenv.config({ path: "../.env" });
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://restaurant-reservation-using-mern-stack.vercel.app",
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
