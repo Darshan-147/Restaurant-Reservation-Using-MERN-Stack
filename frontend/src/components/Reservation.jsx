@@ -102,7 +102,8 @@ const Reservation = () => {
         <div className="banner">
           <div className="reservation_form_box">
             <h1>MAKE A RESERVATION</h1>
-            <p>For Further Questions, Please Call</p>
+            <p style={{marginBottom:0}}>For Further Questions, Please Call</p>
+            <p>+91 81607 46102</p>
             <form>
               <div>
                 <input
