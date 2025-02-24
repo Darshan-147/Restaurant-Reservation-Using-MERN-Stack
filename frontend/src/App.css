@@ -74,7 +74,7 @@ nav .navLinks .links a:hover {
   transition: 0.3s;
   cursor: pointer;
 }
-nav .menuBtn {
+nav .menuBtn, nav .signInBtn{
   padding: 8px 20px;
   color: black;
   background: transparent;
@@ -82,11 +82,21 @@ nav .menuBtn {
   border-radius: 20px;
   font-size: 16px;
 }
-nav .menuBtn:hover {
+nav .menuBtn:hover, nav .signInBtn:hover {
   color: #fff;
   background: #222;
   transition: 0.3s;
   cursor: pointer;
+}
+
+.signInBtn {
+  padding: 8px 16px;
+  color: white;
+  border: 1px dashed !important;
+  border-radius: 4px !important;
+  cursor: pointer;
+  font-weight: bold;
+  background: transparent;
 }
 
 nav .cl-avatarBox {
@@ -1020,6 +1030,20 @@ footer .container .banner .right {
 .reservation .container .banner .reservation_form_box button:hover span {
   background: #fff;
   color: #111;
+}
+
+.signin-button {
+  padding: 12px 24px;
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.signin-button:hover {
+  background-color: #f57c00;
 }
 
 @media (max-width: 1520px) {

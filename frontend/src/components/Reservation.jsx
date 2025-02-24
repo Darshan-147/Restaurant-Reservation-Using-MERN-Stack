@@ -3,6 +3,7 @@ import { HiOutlineArrowRight } from "react-icons/hi";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { useUser, SignInButton } from "@clerk/clerk-react";
 
 const Reservation = () => {
   const [firstName, setFirstName] = useState("");
@@ -12,6 +13,7 @@ const Reservation = () => {
   const [time, setTime] = useState("");
   const [phone, setPhone] = useState("");
   const navigate = useNavigate();
+  const { isSignedIn } = useUser();
 
   // Validation Function for custom error implementation
   const validateInputs = () => {
@@ -64,6 +66,10 @@ const Reservation = () => {
   const handleReservation = async (e) => {
     e.preventDefault();
 
+    if (!isSignedIn) {
+      return;
+    }
+
     // Validate inputs before making API call
     if (!validateInputs()) {
       return;
@@ -71,7 +77,9 @@ const Reservation = () => {
 
     try {
       const { data } = await axios.post(
-        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/v1/reservation/send`,
+        `${
+          import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
+        }/api/v1/reservation/send`,
         { firstName, lastName, email, phone, date, time },
         {
           headers: {
@@ -93,6 +101,29 @@ const Reservation = () => {
     }
   };
 
+  if (!isSignedIn) {
+    return (
+      <section className="reservation" id="reservation">
+        <div className="container">
+          <div className="banner">
+            <img src="/reservation.png" alt="res" />
+          </div>
+          <div className="banner">
+            <div className="reservation_form_box">
+              <h1>MAKE A RESERVATION</h1>
+              <p>Please sign in to make a reservation</p>
+              <div style={{display:"flex", justifyContent:"center"}}>
+                <SignInButton mode="modal">
+                  <button className="signin-button">Sign In to Reserve</button>
+                </SignInButton>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="reservation" id="reservation">
       <div className="container">
@@ -102,7 +133,9 @@ const Reservation = () => {
         <div className="banner">
           <div className="reservation_form_box">
             <h1>MAKE A RESERVATION</h1>
-            <p style={{marginBottom:0}}>For Further Questions, Please Call</p>
+            <p style={{ marginBottom: 0 }}>
+              For Further Questions, Please Call
+            </p>
             <p>+91 81607 46102</p>
             <form>
               <div>
